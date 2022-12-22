@@ -25,13 +25,19 @@ export class FeedBack extends React.Component {
       if (evt.target.id === 'Bad') {
         this.setState(state => ({ Bad: this.state.Bad + 1}));
       }
-
-      this.setState(state => ({ Total: this.state.Total + 1}));
-      let percent = Math.round((this.state.Good / this.state.Total) * 100) ;
-      this.setState(state => ({ Positive: isNaN(percent) ? 0 : percent}));
+      this.countTotalFeedback();
+      this.countPositiveFeedbackPercentage();
+      
   }
 
+  countTotalFeedback() {
+    this.setState(state => ({ Total: this.state.Total + 1}));
+  }
 
+  countPositiveFeedbackPercentage(){
+    let percent = Math.round((this.state.Good / this.state.Total) * 100) ;
+    this.setState(state => ({ Positive: isNaN(percent) ? 0 : percent}));
+  }
 
   render() {
 
