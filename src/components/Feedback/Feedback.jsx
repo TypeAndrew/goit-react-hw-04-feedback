@@ -1,31 +1,63 @@
 import React from "react";
 
-const statusFB = [{ title: 'good' }, { title: 'neutral' }, { title: 'bad' }];
+const statusFB = [{ title: 'Good' }, { title: 'Neutral' }, { title: 'Bad' }, { title: 'Total' }, { title: 'Positive' }];
 
 export class FeedBack extends React.Component {
 
   state = {
-    good: 0,
-    neutral: 0,
-    bad: 0
+    Good: 0,
+    Neutral: 0,
+    Bad: 0,
+    Total: 0,
+    Positive: 0
+
   }
 
-    counter = () => {
+    counter = (evt) => {
       
-    this.setState(state => ({ good: this.state.good + 1}));
+      console.log(evt.target.id);
+      if (evt.target.id === 'Good') {
+        this.setState(state => ({ Good: this.state.Good + 1}));
+      }
+      if (evt.target.id === 'Neutral') {
+        this.setState(state => ({ Neutral: this.state.Neutral + 1}));
+      }
+      if (evt.target.id === 'Bad') {
+        this.setState(state => ({ Bad: this.state.Bad + 1}));
+      }
+
+      this.setState(state => ({ Total: this.state.Total + 1}));
+      let percent = Math.round((this.state.Good / this.state.Total) * 100) ;
+      this.setState(state => ({ Positive: isNaN(percent) ? 0 : percent}));
   }
+
+
 
   render() {
-    const { good } =  this.state ;
-    const {neutral} =  this.state ;
+
     return (
+      
+        <>
+        <p>
+         {statusFB.map(status => ( 
+
+            status.title === 'Total' || status.title === 'Positive' ? undefined : <button id={status.title} onClick={this.counter}>{status.title}</button>
+            
+            ))}
+        </p> 
+        <div>
+          <h4>Statistics:</h4>
         <ul>
-            {statusFB.map(status => ( 
-                <li>{status.title} <button onClick={this.counter}>{good }</button></li>
-            ))}   
-        
-        {neutral }
-      </ul>
+        {statusFB.map(status => ( 
+          
+            <li> {status.title} : {this.state[status.title]} {status.title === 'Positive' ?  '%' : undefined} </li>
+         
+          ))}
+          </ul> 
+          </div>   
+           </> 
+          
+       
     );
       
     
