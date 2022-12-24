@@ -2,8 +2,8 @@ import React from "react";
 import { FeedbackOptions } from "../FeedbackOptions/FeedbackOptions";  
 import { Statistics } from "../Statistics/Statistics";  
 import { Section } from "../Section/Section";
+import { Notification } from "./Notification";
 
-<<<<<<< HEAD
 const statusesFeedback = [{ title: 'Good' }, { title: 'Neutral' }, { title: 'Bad' }, { title: 'Total' }, { title: 'Positive' }];
 
 export class FeedBack extends React.Component {
@@ -47,37 +47,20 @@ export class FeedBack extends React.Component {
 
     
   render( ) {
-   
+    const { Total } = this.state;
     return (
       
       <>
         <Section title={"Feedback"} >
           <FeedbackOptions options={statusesFeedback} onLeaveFeedback={this.counter} state={this.state } />
         </Section>
-        <Section title={"Statistic:"}>
-          <Statistics options={statusesFeedback} state={this.state } />
-        </Section>
+        
+        {Total === 0 ? <Notification message="There is no feedback" /> :
+          <Section title={"Statistic:"}>
+            <Statistics options={statusesFeedback} state={this.state} />
+        </Section>}
       </> 
-=======
 
-export class FeedBack extends React.Component {
-
-  
-  render() {
-    
-    return (
-      
-        <>
-        <p >
-         {this.props.statusFB.map(status => ( 
-            
-            status.title === 'Total' || status.title === 'Positive' ? undefined : <button key={status.title} id={status.title} onClick={this.props.counter}>{status.title}</button>
-            
-            ))}
-        </p> 
-         
-           </> 
->>>>>>> 23907419785a1b8624763fca3efacc87d9ae63ad
           
        
     );

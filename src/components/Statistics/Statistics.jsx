@@ -2,7 +2,6 @@ import React from "react";
 
 export class Statistics extends React.Component {
     
-   
   render() {
     let n = 0;
     return (
