@@ -1,7 +1,9 @@
 import React from "react";
 import { FeedBack } from "./Feedback/Feedback"; 
-  
+
 export const App = () => {
+
+   
   return (
     <div
       style={{
@@ -14,8 +16,9 @@ export const App = () => {
         color: '#010101'
       }}
     >
-     <FeedBack/> 
+     <FeedBack />
     </div>
   );
 };
+
 

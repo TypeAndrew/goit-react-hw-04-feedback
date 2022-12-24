@@ -1,6 +1,9 @@
 import React from "react";
+import { FeedbackOptions } from "../FeedbackOptions/FeedbackOptions";  
+import { Statistics } from "../Statistics/Statistics";  
+import { Section } from "../Section/Section";
 
-const statusFB = [{ title: 'Good' }, { title: 'Neutral' }, { title: 'Bad' }, { title: 'Total' }, { title: 'Positive' }];
+const statusesFeedback = [{ title: 'Good' }, { title: 'Neutral' }, { title: 'Bad' }, { title: 'Total' }, { title: 'Positive' }];
 
 export class FeedBack extends React.Component {
 
@@ -13,20 +16,22 @@ export class FeedBack extends React.Component {
 
   }
 
-    counter = (evt) => {
+  statusFB = [{ title: 'Good' }, { title: 'Neutral' }, { title: 'Bad' }, { title: 'Total' }, { title: 'Positive' }];
+
+  counter = (evt) => {
       
-      console.log(evt.target.id);
-      if (evt.target.id === 'Good') {
-        this.setState(state => ({ Good: this.state.Good + 1}));
-      }
-      if (evt.target.id === 'Neutral') {
-        this.setState(state => ({ Neutral: this.state.Neutral + 1}));
-      }
-      if (evt.target.id === 'Bad') {
-        this.setState(state => ({ Bad: this.state.Bad + 1}));
-      }
-      this.countTotalFeedback();
-      this.countPositiveFeedbackPercentage();
+    console.log(evt.target.id);
+    if (evt.target.id === 'Good') {
+      this.setState(state => ({ Good: this.state.Good + 1 }));
+    }
+    if (evt.target.id === 'Neutral') {
+      this.setState(state => ({ Neutral: this.state.Neutral + 1 }));
+    }
+    if (evt.target.id === 'Bad') {
+      this.setState(state => ({ Bad: this.state.Bad + 1 }));
+    }
+    this.countTotalFeedback();
+    this.countPositiveFeedbackPercentage();
       
   }
 
@@ -39,33 +44,23 @@ export class FeedBack extends React.Component {
     this.setState(state => ({ Positive: isNaN(percent) ? 0 : percent}));
   }
 
-  render() {
-
+    
+  render( ) {
+   
     return (
       
-        <>
-        <p>
-         {statusFB.map(status => ( 
-
-            status.title === 'Total' || status.title === 'Positive' ? undefined : <button id={status.title} onClick={this.counter}>{status.title}</button>
-            
-            ))}
-        </p> 
-        <div>
-          <h4>Statistics:</h4>
-        <ul>
-        {statusFB.map(status => ( 
-          
-            <li> {status.title} : {this.state[status.title]} {status.title === 'Positive' ?  '%' : undefined} </li>
-         
-          ))}
-          </ul> 
-          </div>   
-           </> 
+      <>
+        <Section title={"Feedback"} >
+          <FeedbackOptions options={statusesFeedback} onLeaveFeedback={this.counter} state={this.state } />
+        </Section>
+        <Section title={"Statistic:"}>
+          <Statistics options={statusesFeedback} state={this.state } />
+        </Section>
+      </> 
           
        
     );
-      
+    
     
   }
 
