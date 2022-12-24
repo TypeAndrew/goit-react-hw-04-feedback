@@ -3,6 +3,7 @@ import { FeedbackOptions } from "../FeedbackOptions/FeedbackOptions";
 import { Statistics } from "../Statistics/Statistics";  
 import { Section } from "../Section/Section";
 
+<<<<<<< HEAD
 const statusesFeedback = [{ title: 'Good' }, { title: 'Neutral' }, { title: 'Bad' }, { title: 'Total' }, { title: 'Positive' }];
 
 export class FeedBack extends React.Component {
@@ -57,6 +58,26 @@ export class FeedBack extends React.Component {
           <Statistics options={statusesFeedback} state={this.state } />
         </Section>
       </> 
+=======
+
+export class FeedBack extends React.Component {
+
+  
+  render() {
+    
+    return (
+      
+        <>
+        <p >
+         {this.props.statusFB.map(status => ( 
+            
+            status.title === 'Total' || status.title === 'Positive' ? undefined : <button key={status.title} id={status.title} onClick={this.props.counter}>{status.title}</button>
+            
+            ))}
+        </p> 
+         
+           </> 
+>>>>>>> 23907419785a1b8624763fca3efacc87d9ae63ad
           
        
     );
