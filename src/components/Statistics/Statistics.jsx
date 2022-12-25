@@ -1,21 +1,17 @@
-import React from "react";
 
-export class Statistics extends React.Component {
-    
-  render() {
-    let n = 0;
-    return (
-      
-      <>
-        <ul>
-          {this.props.options.map(status => (
-          
-            <li key={n++}> {status.title} : {this.props.state[status.title]} {status.title === 'Positive' ? '%' : undefined} </li>
-         
-          ))}
-        </ul>
-      </>
-    
-    )
-  }
+const statusesFeedback = [{ title: 'good' }, { title: 'neutral' }, { title: 'bad' }, { title: 'total' }, { title: 'percetage' }];
+export function Statistics(props) {
+  
+  
+  let n = 0;
+  return (
+  
+      <ul>
+        {statusesFeedback.map(status => (
+        
+          <li key={n++}> {status.title} : {props[status.title]} {status.title === 'positive' ? '%' : ''} </li>
+        
+        ))}
+      </ul>
+  )
 }

@@ -1,23 +1,19 @@
-import React from "react";
- 
 
-export class FeedbackOptions extends React.Component {
+export function FeedbackOptions(props){
 
-
-    render() {
-    let n = 0;
-    const { onLeaveFeedback } = this.props;
-    return (
+   let n = 0;
+   const { onLeaveFeedback, options } = props;
+   return (
       
       <p>
-         {this.props.options.map(status => ( 
+         {options.map(status => ( 
             <span key={n++}>
-             {status.title !== 'Total' && status.title !== 'Positive' &&
+             {status.title !== 'total' && status.title !== 'positive' &&
                <button id={status.title} onClick={onLeaveFeedback}>{status.title}</button>}
             </span>
-            ))}
-        </p> 
+         ))}
+      </p> 
         
-       );
-    }
+   );
+  
 }

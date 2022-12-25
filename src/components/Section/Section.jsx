@@ -1,16 +1,11 @@
-import React from "react";
+export function Section(props) {
 
-export class Section extends React.Component {
-
-    
-    render() {
-
-        const { title,children } = this.props; 
+        const { title,children } = props; 
         
         return (
             <section>{title}
                 {children}
             </section>
         )  
-    }
+    
 }
