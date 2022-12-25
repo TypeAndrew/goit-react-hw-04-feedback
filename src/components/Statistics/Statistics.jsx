@@ -9,7 +9,7 @@ export function Statistics(props) {
       <ul>
         {statusesFeedback.map(status => (
         
-          <li key={n++}> {status.title} : {props[status.title]} {status.title === 'positive' ? '%' : ''} </li>
+          <li key={n++}> {status.title} : {props[status.title]} {status.title === 'percetage' ? '%' : ''} </li>
         
         ))}
       </ul>
