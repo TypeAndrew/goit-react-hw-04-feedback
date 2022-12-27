@@ -8,8 +8,7 @@ export function FeedbackOptions(props){
       <p>
          {options.map(status => ( 
             <span key={status }>
-             {status.title !== 'total' && status.title !== 'positive' &&
-               <button id={status} onClick={onLeaveFeedback}>{status}</button>}
+             {<button id={status} onClick={onLeaveFeedback}>{status}</button>}
             </span>
          ))}
       </p> 
