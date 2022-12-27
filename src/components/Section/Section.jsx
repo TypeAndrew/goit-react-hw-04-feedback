@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 export function Section(props) {
 
         const { title,children } = props; 
@@ -9,3 +11,8 @@ export function Section(props) {
         )  
     
 }
+
+Section.propTypes = {
+  title: PropTypes.string,
+  
+};

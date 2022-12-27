@@ -1,15 +1,15 @@
 
 export function FeedbackOptions(props){
 
-   let n = 0;
+  // let n = 0;
    const { onLeaveFeedback, options } = props;
    return (
       
       <p>
          {options.map(status => ( 
-            <span key={n++}>
+            <span key={status }>
              {status.title !== 'total' && status.title !== 'positive' &&
-               <button id={status.title} onClick={onLeaveFeedback}>{status.title}</button>}
+               <button id={status} onClick={onLeaveFeedback}>{status}</button>}
             </span>
          ))}
       </p> 

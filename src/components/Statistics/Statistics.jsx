@@ -1,17 +1,34 @@
+import PropTypes from 'prop-types';
 
-const statusesFeedback = [{ title: 'good' }, { title: 'neutral' }, { title: 'bad' }, { title: 'total' }, { title: 'percetage' }];
 export function Statistics(props) {
   
   
-  let n = 0;
+  const { good, bad, neutral, total, percetage } = props;
   return (
-  
-      <ul>
-        {statusesFeedback.map(status => (
-        
-          <li key={n++}> {status.title} : {props[status.title]} {status.title === 'percetage' ? '%' : ''} </li>
-        
-        ))}
-      </ul>
-  )
+    <>
+      <p>
+        Good: {good}
+      </p>  
+      <p>
+        Bad: {bad}
+       </p>  
+      <p>
+        Neutral: {neutral}
+       </p>  
+      <p>
+        Total: {total}
+       </p>  
+      <p>
+        Percetage: {percetage} %
+       </p>  
+     </>   
+   )
 }
+
+Statistics.propTypes = {
+  good: PropTypes.number,
+  bad: PropTypes.number,
+  neutral: PropTypes.number,
+  total: PropTypes.number,
+  percetage: PropTypes.number,
+};
