@@ -1,7 +1,7 @@
 
 export function FeedbackOptions(props){
 
-  // let n = 0;
+   
    const { onLeaveFeedback, options } = props;
    return (
       
